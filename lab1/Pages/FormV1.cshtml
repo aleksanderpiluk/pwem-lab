@@ -1,0 +1,26 @@
+@page
+@model FormV1Model
+@{
+    ViewData["Title"] = "FormV1";
+}
+
+<form class="col-lg-6 offset-lg-3 border rounded p-5 d-flex gap-3 flex-column" method="post">
+  <div class="form-group">
+    <label for="inputName">Name</label>
+    <input type="text" class="form-control" asp-for="Name" aria-describedby="name" placeholder="Enter your name">
+  </div>
+  <div class="form-group">
+    <label for="inputEmail">Email address</label>
+    <input type="email" class="form-control" asp-for="Email" aria-describedby="email" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="inputMsg">Message</label>
+    <input type="text" class="form-control" asp-for="Message" aria-describedby="message" placeholder="Enter your message">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+@if(Model.Name != null) { <p>Name: @Model.Name</p> }
+@if(Model.Email != null) { <p>Email: @Model.Email</p> }
+@if(Model.Message != null) { <p>Message: @Model.Message</p> }

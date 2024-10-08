@@ -1,0 +1,26 @@
+@page
+@model FormV2Model
+@{
+    ViewData["Title"] = "FormV2 - Login";
+}
+
+@section scripts{
+   <partial name="_ValidationScriptsPartial" />
+}
+
+<form class="col-lg-6 offset-lg-3 border rounded p-5 d-flex gap-3 flex-column" method="post">
+    <h2>Register:</h2>
+    <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" asp-for="Email" aria-describedby="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="inputMsg">Password</label>
+        <input type="password" class="form-control" asp-for="Password" aria-describedby="message" placeholder="Enter password">
+    </div>
+    <div class="form-group">
+        <label for="inputMsg">Repeat password</label>
+        <input type="password" class="form-control" asp-for="Password2" aria-describedby="message" placeholder="Enter password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
