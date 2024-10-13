@@ -1,0 +1,45 @@
+@page
+@model FormV4Model
+@{
+	ViewData["Title"] = "Using JS liblary";
+}
+
+@section scripts{
+   <partial name="_ValidationScriptsPartial" />
+}
+
+
+<img src="#" alt="Butter dog"  class="background-doggo"/>
+<section class="col-lg-6 offset-lg-3  rounded p-5 d-flex gap-3 flex-column" method="post">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVxa1hAF_fQOCNS5i225rRzQQOCaUt2xWqhA&s" alt="">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4oZESgXL_S48pKPyKBxpR9NcRnCEqCge09g&s" alt="">
+	<img src="https://img-01.stickers.cloud/packs/0e0dc60a-08f4-4b2e-b742-387865d02487/webp/d1ae2a81-b556-44c4-82a1-fd9acca50b62.webp" alt="">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2F-hcVsgRoXXpiL5ttJCZG3W4uOVVxoXTRw&s" alt="">
+	<img src="https://cdn.cadrift.net/wp-content/uploads/2024/03/Catto-Pic-Piccolo-and-Harmony-Sleepies.jpg" alt="">
+	<img src="https://i.redd.it/rxanonq97d431.jpg" alt="">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaKiur7BYISxRkwiZfLrFhqXo-nrIY_yk7jg&s" alt="">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5I-LyW9aEufGed1suUqzi6eoGmm0KlsUu1w&s" alt="">
+	<img src="https://i.redd.it/82h08yqbucs11.jpg" alt="">
+	<img src="https://pobierak.jeja.pl/images/7/7/9/185765_hiszpanska-inkwizycja.jpg" alt="">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3dn4ygx7cJsjwdswZyr43HgsxrO8kA7DtwQ&s" alt="">
+	<img src="https://doggo-doggo.com/cdn/shop/products/IMG_7531k_1024x1024.png?v=1705429753" alt="">
+	<img src="https://i.scdn.co/image/ab67616d0000b27329883b75034b015877e62408" alt="">
+	<img src="https://i.ebayimg.com/images/g/CvEAAOSw2IxfTYTU/s-l400.png" alt="">
+	<img src="https://d375139ucebi94.cloudfront.net/region2/pl/233259/biz_photo/07fac073695d413880b533621365d9-doggo-zone-tymoteusz-szygula-biz-photo-e5e5c7e614da421b896861545f360b-booksy.jpeg" alt="">
+	<img src="https://pobierak.jeja.pl/pictures/medium/k7/kj0w523f.jpg" alt="">
+	<nav>
+		<button type="button" id="to-top">To top</button>
+	</nav>
+</section>
+
+<script type="text/javascript" defer>
+	window.onload = () => {
+		var elevator = new Elevator({
+			element: document.querySelector("#to-top"),
+			mainAudio: '/music/elevator.mp3',
+			endAudio: '/music/ding.mp3'
+		});
+
+		elevator.elevate();	
+	}
+</script>

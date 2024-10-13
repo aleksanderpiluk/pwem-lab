@@ -1,0 +1,46 @@
+@page
+@model FormV3Model
+@{
+	ViewData["Title"] = "FormV3 - Send data via Ajax";
+}
+
+
+<img src="#" alt="Butter dog"  class="background-doggo"/>
+<form class="col-lg-6 offset-lg-3 border rounded p-5 d-flex gap-3 flex-column" method="post">
+	<h2>Adoptuj kotka</h2>
+	<label for="">
+		Imie
+		<input type="text" name="Name" asp-for="Name">
+	</label>
+	<label for="">
+		Nazwisko
+		<input type="text" name="Surename">
+	</label>
+	<label for="">
+		Numer telefonu
+		<input type="text" name="Phone">
+	</label>
+	<select name="Cat" id="">
+		<option value="1">Jasio - Kot dachowy</option>
+		<option value="2">Pasio - Kot dachowy</option>
+		<option value="3">Mangolio - Kot abisyjski</option>
+	</select>
+	
+	<button type="submit">Wysjij zapytanie</button>
+</form>
+
+<script type="text/javascript" defer>
+	const form = document.querySelector("form");
+	form.addEventListener("submit", async (event) => {
+		event.preventDefault();
+		const response = await fetch(form.action, {
+			method: form.method,
+			body: new FormData(form)
+		});
+		const data = await response.json();
+		if(response.ok){
+			document.querySelector(".background-doggo").src = data;
+			form.classList.add("hidden");
+		}
+	})
+</script>
