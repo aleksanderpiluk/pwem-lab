@@ -1,0 +1,64 @@
+@model ToDoApp.Models.ToDoModel;
+
+@{
+    ViewData["Title"] = "TODO App";
+}
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+input {
+    border: 2px solid darkgray;
+    width: 100%;
+}
+
+tr.done {
+    background-color: green;
+}
+
+</style>
+
+<table>
+  <tr>
+    <th>Task</th>
+    <th>Actions</th>
+  </tr>
+  @* <tr>
+    <td>Lorem ipsum dolor sit amet</td>
+    <td>
+        <button>Done</button>
+        <button>Remove</button>
+    </td>
+  </tr> *@
+  @for(int i = 0; i < Model.Items.Count; i++) {
+    <tr class="@(Model.Items[i].Done ? "done" : "")">
+        <td><input type="text" value="@Model.Items[i].Task"></td>
+        <td>
+            @if(Model.Items[i].Done != true) {
+                <form asp-action="Done" method="post"><input type="hidden" name="Index" value="@i"><button type="done">Done</button></form>
+            }
+            <form asp-action="Remove" method="post"><input type="hidden" name="Index" value="@i"><button type="submit">Remove</button></form>
+        </td>
+    </tr>
+  }
+  <tr>
+    <form asp-action="Add" method="post">
+        <td><input type="text" name="Task" value=""></td>
+        <td><button type="submit">Add task</button></td>
+    </form>
+  </tr>
+</table>

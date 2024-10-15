@@ -16,11 +16,15 @@ public class FormV2Model : PageModel
     [BindProperty, Required, Compare(nameof(Password))]
     public string Password2 { get; set; }
 
+    [BindProperty]
+    public string Info { get; set; }
+
     private readonly ILogger<FormV1Model> _logger;
 
     public FormV2Model(ILogger<FormV1Model> logger)
     {
         _logger = logger;
+        Info = "";
     }
 
     public void OnGet()
@@ -29,6 +33,6 @@ public class FormV2Model : PageModel
     }
 
     public void OnPost() {
-
+        Info = "Received valid input";
     }
 }
