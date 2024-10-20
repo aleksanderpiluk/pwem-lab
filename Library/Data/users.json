@@ -1,0 +1,23 @@
+[
+	{
+		"id": 1,
+		"FirstName": "Mariusz",
+		"LastName": "Pudzianowski",
+		"Email": "mariusz.pudzianowski@gmail.com",
+		"Address": "Koziołkowa 32/24, Warszawa, 01-232"
+	},
+	{
+		"id": 2,
+		"FirstName": "Jan",
+		"LastName": "Kowalski",
+		"Email": "jan.kowalski@example.com",
+		"Address": "Lipowa 12, Kraków, 30-001"
+	},
+	{
+		"id": 3,
+		"FirstName": "Anna",
+		"LastName": "Nowak",
+		"Email": "anna.nowak@example.com",
+		"Address": "Długa 7, Wrocław, 50-529"
+	}
+]

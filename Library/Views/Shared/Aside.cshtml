@@ -1,0 +1,89 @@
+@{
+	// Pobieranie aktualnej roli użytkownika z sesji
+	var userRole = Context.Session.GetString("UserRole");
+
+	var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+	var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+<aside class="sidebar" data-color="orange">
+	<div class="logo">
+		<a href="/" class="simple-text logo-mini">
+			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M3 5.5C3 4.83696 3.26339 4.20107 3.73223 3.73223C4.20107 3.26339 4.83696 3 5.5 3H7.5C8.16304 3 8.79893 3.26339 9.26777 3.73223C9.73661 4.20107 10 4.83696 10 5.5V26.5C10 27.163 9.73661 27.7989 9.26777 28.2678C8.79893 28.7366 8.16304 29 7.5 29H5.5C4.83696 29 4.20107 28.7366 3.73223 28.2678C3.26339 27.7989 3 27.163 3 26.5V5.5ZM5.5 5C5.36739 5 5.24021 5.05268 5.14645 5.14645C5.05268 5.24021 5 5.36739 5 5.5V26.5C5 26.6326 5.05268 26.7598 5.14645 26.8536C5.24021 26.9473 5.36739 27 5.5 27H7.5C7.63261 27 7.75979 26.9473 7.85355 26.8536C7.94732 26.7598 8 26.6326 8 26.5V5.5C8 5.36739 7.94732 5.24021 7.85355 5.14645C7.75979 5.05268 7.63261 5 7.5 5H5.5ZM12 5.5C12 4.83696 12.2634 4.20107 12.7322 3.73223C13.2011 3.26339 13.837 3 14.5 3H16.5C17.163 3 17.7989 3.26339 18.2678 3.73223C18.7366 4.20107 19 4.83696 19 5.5V26.5C19 27.163 18.7366 27.7989 18.2678 28.2678C17.7989 28.7366 17.163 29 16.5 29H14.5C13.837 29 13.2011 28.7366 12.7322 28.2678C12.2634 27.7989 12 27.163 12 26.5V5.5ZM14.5 5C14.3674 5 14.2402 5.05268 14.1464 5.14645C14.0527 5.24021 14 5.36739 14 5.5V26.5C14 26.6326 14.0527 26.7598 14.1464 26.8536C14.2402 26.9473 14.3674 27 14.5 27H16.5C16.6326 27 16.7598 26.9473 16.8536 26.8536C16.9473 26.7598 17 26.6326 17 26.5V5.5C17 5.36739 16.9473 5.24021 16.8536 5.14645C16.7598 5.05268 16.6326 5 16.5 5H14.5ZM21.8 7.605C20.505 7.963 19.736 9.338 20.083 10.675L24.353 27.141C24.701 28.479 26.031 29.272 27.326 28.914L29.201 28.394C30.495 28.037 31.264 26.662 30.917 25.324L26.647 8.86C26.299 7.522 24.969 6.729 23.674 7.087L21.8 7.605ZM21.958 10.156C21.9236 10.029 21.9404 9.8936 22.0047 9.77882C22.069 9.66404 22.1758 9.57902 22.302 9.542L24.177 9.023C24.2393 9.00657 24.3043 9.00275 24.3681 9.01178C24.432 9.0208 24.4933 9.04248 24.5487 9.07555C24.604 9.10862 24.6522 9.15241 24.6904 9.20435C24.7285 9.25628 24.7559 9.31532 24.771 9.378L29.041 25.844C29.0754 25.9709 29.0588 26.1062 28.9946 26.2209C28.9305 26.3357 28.8241 26.4208 28.698 26.458L26.823 26.977C26.7607 26.9934 26.6957 26.9972 26.6319 26.9882C26.568 26.9792 26.5067 26.9575 26.4513 26.9244C26.396 26.8914 26.3478 26.8476 26.3096 26.7957C26.2715 26.7437 26.2441 26.6847 26.229 26.622L21.958 10.156Z"
+					fill="black" />
+			</svg>
+
+		</a>
+
+		<a href="/" class="simple-text logo-normal">
+			Library
+		</a>
+	</div>
+	<div class="sidebar-wrapper" id="sidebar-wrapper" style="position: relative;">
+		<ul class="nav">
+			@if (userRole == "Librarian")
+			{
+				<li class="@(currentController == "Librarian" && currentAction == "Books" ? "active" : "")">
+					<a href="/Librarian/Books">
+						<i class="now-ui-icons files_box"></i>
+						<p>Books</p>
+					</a>
+				</li>
+				<li class="@(currentController == "Librarian" && currentAction == "Loans" ? "active" : "")">
+					<a href="/Librarian/Loans">
+						<i class="now-ui-icons design_bullet-list-67"></i>
+						<p>Loans</p>
+					</a>
+				</li>
+			}
+			else
+			{
+				<li class="@(currentController == "Borrower" && currentAction == "Borrow" ? "active" : "")">
+					<a href="/Borrower/Borrow">
+						<i class="now-ui-icons education_paper"></i>
+						<p>Borrow</p>
+					</a>
+				</li>
+				<li class="@(currentController == "Borrower" && currentAction == "Loans" ? "active" : "")">
+					<a href="/Borrower/Loans">
+						<i class="now-ui-icons education_paper"></i>
+						<p>Loans</p>
+					</a>
+				</li>
+				<li class="@(currentController == "Borrower" && currentAction == "Notifications" ? "active" : "")">
+					<a href="/Borrower/Notifications">
+						<i class="now-ui-icons ui-1_bell-53"></i>
+						<p>Notifications</p>
+					</a>
+				</li>
+				<li class="@(currentController == "Borrower" && currentAction == "UserProfile" ? "active" : "")">
+					<a href="/Borrower/UserProfile">
+						<i class="now-ui-icons users_single-02"></i>
+						<p>User Profile</p>
+					</a>
+				</li>
+			}
+
+
+			@if (userRole == "Librarian")
+			{
+				<li style="position:absolute;bottom: 10px;width: 100%;">
+					<a href="/Role/SwitchRole?role=Borrower">
+						<i class="now-ui-icons users_single-02"></i>
+						<p>Borrower View</p>
+					</a>
+				</li>
+			}
+			else
+			{
+				<li style="position:absolute;bottom: 10px;width: 100%;">
+					<a href="/Role/SwitchRole?role=Librarian">
+						<i class="now-ui-icons education_agenda-bookmark"></i>
+						<p>Librarian View</p>
+					</a>
+				</li>
+			}
+		</ul>
+	</div>
+</aside>
